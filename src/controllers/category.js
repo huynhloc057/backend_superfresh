@@ -17,7 +17,11 @@ const createCategories = (categories) => {
 
 exports.addCategory = (req, res) => {
   const { name } = req.body;
-  console.log(req.body);
+
+  if (req.file) {
+    categoryObj.categoryImage = req.file.path;
+  }
+
   const categoryObj = {
     name,
     slug: `${slugify(name)}-${shortid.generate()}`,

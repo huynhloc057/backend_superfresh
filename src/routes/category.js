@@ -7,11 +7,21 @@ const {
   getDisabledCategories,
   enableCategoryById,
 } = require("../controllers/category");
-const { requireSignin, adminMiddleware } = require("../common-middleware");
+const {
+  requireSignin,
+  adminMiddleware,
+  uploadCloud,
+} = require("../common-middleware");
 
 const router = express.Router();
 
-router.post("/add", requireSignin, adminMiddleware, addCategory);
+router.post(
+  "/add",
+  requireSignin,
+  adminMiddleware,
+  uploadCloud.single("categoryImage"),
+  addCategory
+);
 router.get("/getCategories", getCategories);
 router.get("/getDisableCategories", getDisabledCategories);
 router.post("/delete", requireSignin, adminMiddleware, deleteCategoryById);

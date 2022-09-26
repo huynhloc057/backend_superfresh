@@ -1,0 +1,57 @@
+# Add Category
+POST http://localhost:5000/api/category/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "name":"Rau ăn lá"
+}
+
+# Get All Categories
+###################################################
+GET  http://localhost:5000/api/category/getCategories
+Content-Type: application/json
+
+{
+    
+}
+
+# Get All disabled Categories
+###################################################
+GET  http://localhost:5000/api/category/getDisableCategories
+Content-Type: application/json
+
+{
+}
+
+# Delete a category
+###################################################
+POST  http://localhost:5000/api/category/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzM5NzE4NCwiZXhwIjoxNjY1OTg5MTg0fQ.BCXLnSNWMnuGr_Ubd9EoawmTTFRLjqXO-WHYTQDsw5A
+
+{
+    "_id":"63216e8a89d36401b2896750"
+}
+
+# Enable a category
+###################################################
+POST  http://localhost:5000/api/category/enable
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzM5NzE4NCwiZXhwIjoxNjY1OTg5MTg0fQ.BCXLnSNWMnuGr_Ubd9EoawmTTFRLjqXO-WHYTQDsw5A
+
+{
+    "_id":"63216e8a89d36401b2896750"
+}
+
+# Update A category
+###################################################
+POST http://localhost:5000/api/category/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "_id":"63216e8a89d36401b2896750",
+    "name":"Rau cur qua"
+}
+

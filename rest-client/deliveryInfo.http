@@ -1,0 +1,40 @@
+POST http://localhost:5000/api/deliveryInfo/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzNDAwMTIyLCJleHAiOjE2NjU5OTIxMjJ9.XmwLOSOwGsNwmw1FFA4KL9QrlAbOXWh7mt0sJGsekwU
+
+{
+   "address": {
+        "name": "Huynh Loc",
+        "phoneNumber": "0964371127",
+        "address": "To 1 Ap Cay Cay, Xa Phu Ly, Huyen Vinh Cuu, Dong Nai"
+    }
+}
+
+###################################################
+GET  http://localhost:5000/api/deliveryInfo/get
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzNDAwMTIyLCJleHAiOjE2NjU5OTIxMjJ9.XmwLOSOwGsNwmw1FFA4KL9QrlAbOXWh7mt0sJGsekwU
+
+
+{
+    
+}
+
+###################################################
+POST  http://localhost:5000/api/deliveryInfo/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzNDAwMTIyLCJleHAiOjE2NjU5OTIxMjJ9.XmwLOSOwGsNwmw1FFA4KL9QrlAbOXWh7mt0sJGsekwU
+
+{
+    "addressId": "63257ee9bf6cfa95d95bcccf"
+}
+
+###################################################
+POST  http://localhost:5000/api/deliveryInfo/setDefaultDeliveryInfo
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzNDAwMTIyLCJleHAiOjE2NjU5OTIxMjJ9.XmwLOSOwGsNwmw1FFA4KL9QrlAbOXWh7mt0sJGsekwU
+
+
+{
+    "addressId": "63257f4cbf6cfa95d95bccdc"
+}

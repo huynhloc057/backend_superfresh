@@ -1,0 +1,96 @@
+# Add Product
+POST http://localhost:5000/api/product/add
+Content-Type: multipart/form-data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "name": "Rau ma", 
+    "price": "15000",
+    "description": "Day la rau ma",
+    "category": "63216e8a89d36401b2896750",
+    "quantity":100,
+    "productPicture": "day la anh"
+}
+############################################
+POST http://localhost:5000/api/product/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "name": "Đậu bắp", 
+    "price": "20000",
+    "description": "Day la đậu bắp",
+    "category": "63216e8a89d36401b2896750",
+    "quantity":100,
+    "productPicture": "day la anh"
+}
+
+# getProductDetailsBySlug
+############################################
+GET http://localhost:5000/api/product/Rau-ma-wGBKsakH-
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+   
+}
+
+# Get All Product
+############################################
+POST http://localhost:5000/api/product/getProducts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+   
+}
+
+# Get All Product By Category
+############################################
+POST http://localhost:5000/api/product/getProductsByCategory/63216e8a89d36401b2896750
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+   
+}
+
+# Get All Product By Category
+############################################
+POST http://localhost:5000/api/product/getProductsByCategory/63256e059693a6c517b1028a
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+   
+}
+
+# Update  Product by Id
+############################################
+POST http://localhost:5000/api/product/deleteProductById
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "_id": "63217ef021081d67f7b7a552",
+    "name": "Rau ma",
+    "slug": "Rau-ma-wGBKsakH-",
+    "price": 15000,
+    "description": "Day la rau ma",
+    "productPictures": [],
+    "category": "63216e8a89d36401b2896750",
+    "quantity": 100,
+}
+
+# Delete a Product by Id
+############################################
+POST http://localhost:5000/api/product/deleteProductById
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+
+{
+    "_id":""
+}
+
+
+

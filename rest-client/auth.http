@@ -1,0 +1,47 @@
+###################################################
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "email": "lochuynh@gmail.com",
+    "password": "12345678",
+    "name": "Loc"
+}
+
+###################################################
+###################################################
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "roleadmin",
+    "name": "Admin1"
+}
+
+###################################################
+POST  http://localhost:5000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "lochuynh@gmail.com",
+    "password": "12345678"
+}
+
+###################################################
+POST  http://localhost:5000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "roleadmin"
+}
+###################################################
+POST  http://localhost:5000/api/auth/isUserLoggedIn
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzMTIxNzE0LCJleHAiOjE2NjU3MTM3MTR9.nvyasciM8WQOWIJhlixurLhTMIfKbT4Wsi8qGIV-8Hk
+
+{
+    
+}
+

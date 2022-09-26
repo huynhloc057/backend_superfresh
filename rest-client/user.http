@@ -1,0 +1,58 @@
+###################################################
+# get all user not admin
+GET http://localhost:5000/api/user/getUsers
+Content-Type: application/json
+
+{
+    
+}
+
+###################################################
+# get all user is disabled and not admin
+GET http://localhost:5000/api/user/getDisable
+Content-Type: application/json
+
+{
+    
+}
+
+###################################################
+# update a user chưa có profile picture lên cloud ***
+POST http://localhost:5000/api/user/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzMzE0NDE4LCJleHAiOjE2NjU5MDY0MTh9.lav9sT6kt8GzYBJQcWIzernaAM4s3wYNSG3IGi5iHIk
+
+{
+    "_id": "632138f864557fb5e235c21b",
+    "name":"Huynh Loc"
+}
+
+# Delete by Admin
+###################################################
+POST  http://localhost:5000/api/user/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExYWEwYWM4MjEzNDg2NTYxMWEiLCJlbWFpbCI6InN1cGVyanVuaW9yMjQyQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU5MzQ2MDE0LCJleHAiOjE2NjE5MzgwMTR9.UMqoGxnOjPA8i73YC4ONmsrJ-Z0yUXfyxpDBhZmJc9A
+
+{
+    "_id": "..."
+}
+
+# Disable user by Admin
+###################################################
+POST  http://localhost:5000/api/user/disabled
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzMxNzIwNiwiZXhwIjoxNjY1OTA5MjA2fQ.Fgdbb33DLnQoxW9IKCflxwgIEGOqF9_i64oDC_XrVTQ
+
+{
+    "_id": "632138f864557fb5e235c21b"
+}
+
+# enable user by Admin
+###################################################
+POST  http://localhost:5000/api/user/enabled
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzMxNzIwNiwiZXhwIjoxNjY1OTA5MjA2fQ.Fgdbb33DLnQoxW9IKCflxwgIEGOqF9_i64oDC_XrVTQ
+
+{
+    "_id": "632138f864557fb5e235c21b"
+}

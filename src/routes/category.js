@@ -6,6 +6,7 @@ const {
   deleteCategoryById,
   getDisabledCategories,
   enableCategoryById,
+  getCategoryById,
 } = require("../controllers/category");
 const {
   requireSignin,
@@ -23,6 +24,7 @@ router.post(
   addCategory
 );
 router.get("/getCategories", getCategories);
+router.post("/getCateById", getCategoryById);
 router.get("/getDisableCategories", getDisabledCategories);
 router.post("/delete", requireSignin, adminMiddleware, deleteCategoryById);
 router.post("/enable", requireSignin, adminMiddleware, enableCategoryById);

@@ -47,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViN
 
 # Get All Product By Category
 ############################################
-POST http://localhost:5000/api/product/getProductsByCategory/63216e8a89d36401b2896750
+POST http://localhost:5000/api/product/getProductsByCategory/633add93598788c5610304e4
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
 
@@ -57,7 +57,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViN
 
 # Get All Product By Category
 ############################################
-POST http://localhost:5000/api/product/getProductsByCategory/63256e059693a6c517b1028a
+POST http://localhost:5000/api/product/getProductsByCategory/633adda2598788c5610304e8
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
 

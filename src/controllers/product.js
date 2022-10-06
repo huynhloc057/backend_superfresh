@@ -6,11 +6,11 @@ exports.addProduct = (req, res) => {
   const { name, price, description, category, quantity } = req.body;
   let productPictures = [];
 
-  // if (req.files.length > 0) {
-  //   productPictures = req.files.map((file) => {
-  //     return { img: file.path };
-  //   });
-  // }
+  if (req.files.length > 0) {
+    productPictures = req.files.map((file) => {
+      return { img: file.path };
+    });
+  }
   const product = new Product({
     name: name,
     slug: `${slugify(name)}-${shortid.generate()}`,
@@ -35,15 +35,6 @@ exports.getProductById = (req, res) => {
   if (_id) {
     Product.findOne({ _id, isDisabled: { $ne: true } })
       .populate({ path: "category", select: "_id name categoryImage" })
-      .populate({ path: "brand", select: "_id name brandImage" })
-      .populate("sizes")
-      .populate({
-        path: "sizes",
-        populate: {
-          path: "size",
-          select: "_id size description",
-        },
-      })
       .exec((error, product) => {
         if (error) return res.status(400).json({ error });
         if (product) {

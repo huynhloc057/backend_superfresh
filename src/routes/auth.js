@@ -4,6 +4,7 @@ const {
   signin,
   signinWithGoogle,
   isUserLoggedIn,
+  signout,
 } = require("../controllers/auth");
 const { requireSignin } = require("../common-middleware");
 
@@ -13,5 +14,6 @@ router.post("/signup", signup);
 router.post("/signin", signin);
 router.post("/signin/google", signinWithGoogle);
 router.post("/isUserLoggedIn", requireSignin, isUserLoggedIn);
+router.post("/signout", signout);
 
 module.exports = router;

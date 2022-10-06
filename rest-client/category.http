@@ -16,6 +16,14 @@ Content-Type: application/json
     
 }
 
+# Get Category By iD
+###################################################
+POST  http://localhost:5000/api/category/getCateById
+Content-Type: application/json
+
+{
+    "_id":"633adbcc598788c5610304c8"
+}
 # Get All disabled Categories
 ###################################################
 GET  http://localhost:5000/api/category/getDisableCategories

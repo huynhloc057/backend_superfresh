@@ -53,10 +53,10 @@ exports.signin = async (req, res) => {
       );
       if (isPasswordMatch) {
         const { _id, name, email, role, profilePicture } = existingUser;
-        const token = await generateJwtToken(_id, email, role);
+        const accessToken = await generateJwtToken(_id, email, role);
         // response token and user info
         res.status(200).json({
-          token,
+          accessToken,
           user: { _id, name, email, role, profilePicture },
         });
       } else {
@@ -68,6 +68,13 @@ exports.signin = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error });
   }
+};
+
+exports.signout = (req, res) => {
+  res.clearCookie("accessToken");
+  res.status(200).json({
+    message: "Signout successfully ....!",
+  });
 };
 
 exports.signinWithGoogle = async (req, res) => {

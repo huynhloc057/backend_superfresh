@@ -25,7 +25,8 @@ router.post(
   uploadCloud.array("productPicture"),
   addProduct
 );
-router.get("/:slug", getProductDetailsBySlug);
+router.post("/getProducts", getProducts);
+router.post("/:slug", getProductDetailsBySlug);
 router.post("/searchByProductName", searchByProductName);
 router.post("/getById", getProductById);
 router.delete(
@@ -34,7 +35,6 @@ router.delete(
   adminMiddleware,
   deleteProductById
 );
-router.post("/getProducts", getProducts);
 router.post("/update", requireSignin, adminMiddleware, updateProduct);
 router.post(
   "/addProductReview",

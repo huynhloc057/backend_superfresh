@@ -93,10 +93,7 @@ exports.updateStatus = (req, res) => {
 exports.getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({ paymentStatus: { $ne: "cancelled" } })
-      .populate(
-        "items.product",
-        "_id name slug price discountPercent productPictures"
-      )
+      .populate("items.product", "_id name slug price productPictures")
       .sort({ createdAt: -1 })
       .exec();
     res.status(200).json({ orders });
@@ -107,11 +104,7 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getOrdersByUser = (req, res) => {
   Order.find({ user: req.user._id })
-    .populate(
-      "items.product",
-      "_id name slug price discountPercent productPictures"
-    )
-    .populate("items.variant")
+    .populate("items.product", "_id name slug price  productPictures")
     .sort({ createdAt: -1 })
     .exec((error, orders) => {
       if (error) return res.status(400).json({ error });

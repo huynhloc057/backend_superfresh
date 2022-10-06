@@ -18,14 +18,14 @@ const createCategories = (categories) => {
 exports.addCategory = (req, res) => {
   const { name } = req.body;
 
-  if (req.file) {
-    categoryObj.categoryImage = req.file.path;
-  }
-
   const categoryObj = {
     name,
     slug: `${slugify(name)}-${shortid.generate()}`,
   };
+
+  if (req.file) {
+    categoryObj.categoryImage = req.file.path;
+  }
 
   const cate = new Category(categoryObj);
   cate.save((error, category) => {
@@ -43,10 +43,28 @@ exports.getCategories = (req, res) => {
     if (error) {
       return res.status(400).json({ error });
     } else {
-      const categoriesList = createCategories(categories);
-      return res.status(200).json({ categories: categoriesList });
+      // const categoriesList = createCategories(categories);
+      return res.status(200).json({ categories });
     }
   });
+};
+
+exports.getCategoryById = (req, res) => {
+  const { _id } = req.body;
+  if (_id) {
+    Category.findOne({ _id, isDisabled: { $ne: true } }).exec(
+      (error, category) => {
+        if (error) return res.status(400).json({ error });
+        if (category) {
+          res.status(200).json({ category });
+        } else {
+          res.status(400).json({ error: "something went wrong" });
+        }
+      }
+    );
+  } else {
+    res.status(400).json({ error: "Params required" });
+  }
 };
 
 exports.getDisabledCategories = (req, res) => {

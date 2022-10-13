@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const cors = require("cors");
+const path = require("path");
 
 env.config();
 mongoose

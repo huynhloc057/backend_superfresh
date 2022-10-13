@@ -1,20 +1,20 @@
 # update by Admin
 POST http://localhost:5000/api/order/add
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExYWEwYWM4MjEzNDg2NTYxMWEiLCJlbWFpbCI6InN1cGVyanVuaW9yMjQyQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU5MzQ2MDE0LCJleHAiOjE2NjE5MzgwMTR9.UMqoGxnOjPA8i73YC4ONmsrJ-Z0yUXfyxpDBhZmJc9A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY1NDgwODIxLCJleHAiOjE2NjgwNzI4MjF9.cwohK6EQfY3l6oC99GSeQ7rm7_4GzLP6DNFga-NbCK8
 
 {
-    "addressId": "3123213213",
+    "addressId": "63257f4cbf6cfa95d95bccdc",
     "totalAmount": 250000,
     "paymentStatus": "completed",
     "paymentType": "cod",
     "items": [
         {
-            "product": "658959594",
-            "price": 110000,
-            "quantity": 12
+            "productId": "633c4ac1ed27ad04f66f9d06",
+            "payablePrice": 110000,
+            "purchaseQty": 12
         }
-    ],
+    ]
 }
 
 # update by User
@@ -27,11 +27,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExY
     "orderId": "3123213213"
 }
 
-# Delete by Admin
+# Get All Order By User
 ###################################################
-POST  http://localhost:5000/api/order/getOrdersByUser
+POST  http://localhost:5000/api/order/getOrders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExYWEwYWM4MjEzNDg2NTYxMWEiLCJlbWFpbCI6InN1cGVyanVuaW9yMjQyQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU5MzQ2MDE0LCJleHAiOjE2NjE5MzgwMTR9.UMqoGxnOjPA8i73YC4ONmsrJ-Z0yUXfyxpDBhZmJc9A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY1NDc4MzM2LCJleHAiOjE2NjgwNzAzMzZ9.6MLPMc02vY4ZwUJPI5obsifGwOQFv0_DChozh7hHqwQ
 
 {
 }
@@ -48,9 +48,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExY
 
 # Only Admin can fetch
 ###################################################
-POST  http://localhost:5000/api/order/getAllOrders
+POST  http://localhost:5000/api/order/getCustomerOrders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU1NWExYWEwYWM4MjEzNDg2NTYxMWEiLCJlbWFpbCI6InN1cGVyanVuaW9yMjQyQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU5MzQ2MDE0LCJleHAiOjE2NjE5MzgwMTR9.UMqoGxnOjPA8i73YC4ONmsrJ-Z0yUXfyxpDBhZmJc9A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NTQ3Nzg1NCwiZXhwIjoxNjY4MDY5ODU0fQ.h2m5wyGHg2FUyShXLTXeXuTswBv5WZPvPpoDrkwk7Xo
 
 {
+
 }

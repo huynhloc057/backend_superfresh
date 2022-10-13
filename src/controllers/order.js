@@ -1,7 +1,9 @@
 const { Order, DeliveryInfo } = require("../models");
 
 exports.addOrder = (req, res) => {
-  const { items, address, totalAmount, paymentStatus, paymentType } = req.body;
+  const { items, addressId, totalAmount, paymentStatus, paymentType } =
+    req.body;
+  console.log(items);
   const orderStatus = [
     {
       type: "ordered",
@@ -24,7 +26,7 @@ exports.addOrder = (req, res) => {
 
   const order = new Order({
     user: req.user._id,
-    address,
+    addressId,
     totalAmount,
     items,
     paymentStatus,
@@ -90,21 +92,10 @@ exports.updateStatus = (req, res) => {
   }
 };
 
+//User
 exports.getAllOrders = async (req, res) => {
-  try {
-    const orders = await Order.find({ paymentStatus: { $ne: "cancelled" } })
-      .populate("items.product", "_id name slug price productPictures")
-      .sort({ createdAt: -1 })
-      .exec();
-    res.status(200).json({ orders });
-  } catch (error) {
-    res.status(400).json({ error });
-  }
-};
-
-exports.getOrdersByUser = (req, res) => {
   Order.find({ user: req.user._id })
-    .populate("items.product", "_id name slug price  productPictures")
+    .populate("items.productId", "_id name slug price  productPictures")
     .sort({ createdAt: -1 })
     .exec((error, orders) => {
       if (error) return res.status(400).json({ error });
@@ -113,4 +104,17 @@ exports.getOrdersByUser = (req, res) => {
       }
       res.status(400).json({ error: "something went wrong" });
     });
+};
+
+//Admin
+exports.getCustomerOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ paymentStatus: { $ne: "cancelled" } })
+      .populate("items.productId", "_id name slug price  productPictures")
+      .sort({ createdAt: -1 })
+      .exec();
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 };

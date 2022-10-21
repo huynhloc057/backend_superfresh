@@ -36,20 +36,20 @@ Content-Type: application/json
 ###################################################
 POST  http://localhost:5000/api/category/delete
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzM5NzE4NCwiZXhwIjoxNjY1OTg5MTg0fQ.BCXLnSNWMnuGr_Ubd9EoawmTTFRLjqXO-WHYTQDsw5A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NjE4ODc5MSwiZXhwIjoxNjY4NzgwNzkxfQ.Fjy2JO-HFSnvC_2NLhSRh1966yBd1tYOOH9wgiCPGoY
 
 {
-    "_id":"63216e8a89d36401b2896750"
+    "_id":"633adda2598788c5610304e8"
 }
 
 # Enable a category
 ###################################################
 POST  http://localhost:5000/api/category/enable
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzM5NzE4NCwiZXhwIjoxNjY1OTg5MTg0fQ.BCXLnSNWMnuGr_Ubd9EoawmTTFRLjqXO-WHYTQDsw5A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NjE4ODc5MSwiZXhwIjoxNjY4NzgwNzkxfQ.Fjy2JO-HFSnvC_2NLhSRh1966yBd1tYOOH9wgiCPGoY
 
 {
-    "_id":"63216e8a89d36401b2896750"
+    "_id":"633adda2598788c5610304e8"
 }
 
 # Update A category

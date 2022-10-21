@@ -9,6 +9,8 @@ const {
   searchByProductName,
   getProductByCategory,
   addProductReview,
+  deleteProductByCateId,
+  enableProductByCateId,
 } = require("../controllers/product");
 const {
   requireSignin,
@@ -26,22 +28,35 @@ router.post(
   addProduct
 );
 router.post("/getProducts", getProducts);
-router.post("/:slug", getProductDetailsBySlug);
-router.post("/searchByProductName", searchByProductName);
-router.post("/getById", getProductById);
-router.delete(
-  "/deleteProductById",
-  requireSignin,
-  adminMiddleware,
-  deleteProductById
-);
-router.post("/update", requireSignin, adminMiddleware, updateProduct);
 router.post(
   "/addProductReview",
   requireSignin,
   userMiddleware,
   addProductReview
 );
-router.post("/getProductsByCategory/:_id", getProductByCategory);
+router.post("/getById", getProductById);
+router.post("/update", requireSignin, adminMiddleware, updateProduct);
+router.post("/searchByProductName", searchByProductName);
+router.post("/getProductsByCategory/:categoryId", getProductByCategory);
+router.post(
+  "/deleteByCategory",
+  requireSignin,
+  adminMiddleware,
+  deleteProductByCateId
+);
+router.post(
+  "/enableByCategory",
+  requireSignin,
+  adminMiddleware,
+  enableProductByCateId
+);
+
+router.post("/:slug", getProductDetailsBySlug);
+router.delete(
+  "/deleteProductById",
+  requireSignin,
+  adminMiddleware,
+  deleteProductById
+);
 
 module.exports = router;

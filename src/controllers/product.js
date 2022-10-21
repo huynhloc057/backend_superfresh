@@ -99,9 +99,46 @@ exports.deleteProductById = (req, res) => {
   }
 };
 
+exports.deleteProductByCateId = (req, res) => {
+  const { _id } = req.body;
+  if (_id) {
+    Product.updateMany({ category: _id }, { isDisabled: true }).exec(
+      (error, result) => {
+        if (error) return res.status(400).json({ error });
+        if (result) {
+          res.status(202).json({ result });
+        } else {
+          res.status(400).json({ error: "something went wrong" });
+        }
+      }
+    );
+  } else {
+    return res.status(400).json({ error: "Params required" });
+  }
+};
+
+exports.enableProductByCateId = (req, res) => {
+  const { _id } = req.body;
+  if (_id) {
+    Product.updateMany({ category: _id }, { isDisabled: false }).exec(
+      (error, result) => {
+        if (error) return res.status(400).json({ error });
+        if (result) {
+          res.status(202).json({ result });
+        } else {
+          res.status(400).json({ error: "something went wrong" });
+        }
+      }
+    );
+  } else {
+    return res.status(400).json({ error: "Params required" });
+  }
+};
+
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find({ isDisabled: { $ne: true } })
+      .populate({ path: "category", select: "_id name categoryImage" })
       .limit(100)
       .exec();
 
@@ -116,18 +153,19 @@ exports.getProducts = async (req, res) => {
 };
 
 exports.getProductByCategory = (req, res) => {
-  const { _id } = req.params;
-  if (_id) {
-    Product.find({ category: { $eq: _id }, isDisabled: { $ne: true } }).exec(
-      (error, product) => {
-        if (error) return res.status(400).json({ error });
-        if (product) {
-          res.status(200).json({ product });
-        } else {
-          res.status(400).json({ error: "something went wrong" });
-        }
+  const { categoryId } = req.params;
+  if (categoryId) {
+    Product.find({
+      category: { $eq: categoryId },
+      isDisabled: { $ne: true },
+    }).exec((error, product) => {
+      if (error) return res.status(400).json({ error });
+      if (product) {
+        res.status(200).json({ product });
+      } else {
+        res.status(400).json({ error: "something went wrong" });
       }
-    );
+    });
   } else {
     res.status(400).json({ error: "Params required" });
   }

@@ -27,9 +27,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViN
 
 # getProductDetailsBySlug
 ############################################
-GET http://localhost:5000/api/product/Rau-ma-wGBKsakH-
+POST http://localhost:5000/api/product/DJau-cove-nhat-non-(Vi-200g)-R3dGgIy-G
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
 
 {
    
@@ -47,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViN
 
 # Get All Product By Category
 ############################################
-POST http://localhost:5000/api/product/getProductsByCategory/633add93598788c5610304e4
+POST http://localhost:5000/api/product/getProductsByCategory/633adda2598788c5610304e8
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2MzEyNTA2NiwiZXhwIjoxNjY1NzE3MDY2fQ.wOaErPVvDyuVqUgfRKC5kxYwkMhWjd5uwSkx4gqD7wQ
 
@@ -90,6 +90,38 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViN
 
 {
     "_id":""
+}
+
+# Add Product Review
+############################################
+POST http://localhost:5000/api/product/addProductReview
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY2MTAzNTM5LCJleHAiOjE2Njg2OTU1Mzl9.iXcu488pGddQOMWYm8qG9WX0pK9syajOb9awKRVspC4
+
+{
+    "rating": 3,
+    "comment": "Day la commeny",
+    "productId": "633d31b0a4ed9e7c6472b11b",
+}
+
+# Delete by category Id
+############################################
+POST  http://localhost:5000/api/product/deleteByCategory
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NjE4ODc5MSwiZXhwIjoxNjY4NzgwNzkxfQ.Fjy2JO-HFSnvC_2NLhSRh1966yBd1tYOOH9wgiCPGoY
+
+{
+    "_id":"633adda2598788c5610304e8"
+}
+
+# Enable by category Id
+############################################
+POST  http://localhost:5000/api/product/enableByCategory
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NjE4ODc5MSwiZXhwIjoxNjY4NzgwNzkxfQ.Fjy2JO-HFSnvC_2NLhSRh1966yBd1tYOOH9wgiCPGoY
+
+{
+    "_id":"633adda2598788c5610304e8"
 }
 
 

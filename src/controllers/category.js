@@ -1,6 +1,7 @@
-const { Category } = require("../models");
+const { Category, Product } = require("../models");
 const slugify = require("slugify");
 const shortid = require("shortid");
+const { deleteProductByCateId } = require("./product");
 
 const createCategories = (categories) => {
   const categoryList = [];
@@ -79,9 +80,9 @@ exports.getDisabledCategories = (req, res) => {
 };
 
 exports.deleteCategoryById = (req, res) => {
-  const { _id } = req.body;
-  if (_id) {
-    Category.updateOne({ _id: _id }, { isDisabled: true }).exec(
+  const { categoryId } = req.body;
+  if (categoryId) {
+    Category.updateOne({ _id: categoryId }, { isDisabled: true }).exec(
       (error, result) => {
         if (error) return res.status(400).json({ error });
         if (result) {

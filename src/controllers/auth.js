@@ -93,10 +93,9 @@ exports.signinWithGoogle = async (req, res) => {
       const { _id, name, email, profilePicture, role } = existingUser;
       const token = await generateJwtToken(_id, email, role);
       // response token and user info
-      res.status(201).json({
-        token,
-        user: { _id, name, email, profilePicture, role },
-      });
+      res
+        .status(201)
+        .json({ token, user: { _id, name, email, profilePicture, role } });
     } else {
       const newUser = {
         name,

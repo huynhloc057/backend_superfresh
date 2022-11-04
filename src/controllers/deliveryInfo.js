@@ -25,7 +25,7 @@ exports.addDeliveryInfo = async (req, res) => {
       );
     }
     if (updatedAddress) {
-      res.status(201).json({ address: updatedAddress });
+      res.status(201).json({ message: "Add address successfully" });
     } else {
       res.status(400).json({ error: "something went wrong" });
     }

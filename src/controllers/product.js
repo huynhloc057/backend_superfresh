@@ -1,6 +1,7 @@
 const { Product, Category } = require("../models");
 const shortid = require("shortid");
 const slugify = require("slugify");
+const cloudinary = require("cloudinary");
 
 exports.addProduct = (req, res) => {
   const { name, price, description, category, quantity } = req.body;
@@ -48,43 +49,116 @@ exports.getProductById = (req, res) => {
   }
 };
 
-exports.updateProduct = (req, res) => {
-  let payload = { ...req.body };
-  delete payload._id;
+// Update Product -- Admin
+exports.updateProduct = async (req, res, next) => {
+  let product = await Product.findOne({ slug: req.params.slug });
+  if (!product) {
+    return next(new ErrorHander("Product not found", 404));
+  }
 
-  Product.findOneAndUpdate({ _id: req.body._id }, payload, { new: true }).exec(
-    (error, product) => {
-      if (error) return res.status(400).json({ error });
-      if (product) {
-        return res.status(202).json({ product });
-      }
-      res.status(400).json({ error: "Product does not exist" });
+  let productPictures = [];
+
+  if (req.files.length > 0) {
+    productPictures = req.files.map((file) => {
+      return { img: file.path };
+    });
+  }
+  console.log(productPictures);
+
+  if (productPictures !== undefined) {
+    // Deleting Images From Cloudinary
+    for (let i = 0; i < product.productPictures.length; i++) {
+      const public_id = product.productPictures[i].img
+        .split("/")
+        .pop()
+        .split(".")[0];
+      await cloudinary.v2.uploader.destroy(public_id);
+    }
+  }
+  req.body.productPictures = productPictures;
+  let updatedProduct = await Product.findOneAndUpdate(
+    { _id: product._id },
+    req.body,
+    {
+      new: true,
     }
   );
+  if (updatedProduct) {
+    res.status(200).json({ updatedProduct });
+  } else {
+    res.status(400).json({ error: "update failt" });
+  }
+};
+
+exports.updateQty = (req, res) => {
+  const { productId, sizeProductId, quantity } = req.body;
+  Product.findOne({ _id: productId }).exec((error, product) => {
+    if (error) return res.status(400).json({ error });
+    const sizeMatch = product.sizes.find(
+      (sizeProduct) => sizeProduct._id == sizeProductId
+    );
+    if (sizeMatch) {
+      sizeMatch.quantity = quantity;
+      product.save((error, product) => {
+        if (error) return res.status(400).json({ error });
+        if (product) {
+          res.status(202).json({ product });
+        } else {
+          res.status(400).json({ error: "something went wrong" });
+        }
+      });
+    }
+  });
 };
 
 exports.getProductDetailsBySlug = (req, res) => {
   const { slug } = req.params;
   if (slug) {
-    Product.findOne({ slug, isDisabled: { $ne: true } }).exec(
-      (error, product) => {
+    Product.findOne({ slug, isDisabled: { $ne: true } })
+      .populate({ path: "category", select: "_id name categoryImage" })
+      .populate("reviews")
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "user",
+          select: "_id name profilePicture",
+        },
+      })
+      .exec((error, product) => {
         if (error) return res.status(400).json({ error });
         if (product) {
           res.status(200).json({ product });
         } else {
           res.status(400).json({ error: "something went wrong" });
         }
-      }
-    );
+      });
   } else {
     res.status(400).json({ error: "Params required" });
   }
 };
 
 exports.deleteProductById = (req, res) => {
-  const { productId } = req.body.payload;
+  const { productId } = req.body;
   if (productId) {
     Product.updateOne({ _id: productId }, { isDisabled: true }).exec(
+      (error, result) => {
+        if (error) return res.status(400).json({ error });
+        if (result) {
+          res.status(202).json({ result });
+        } else {
+          res.status(400).json({ error: "something went wrong" });
+        }
+      }
+    );
+  } else {
+    return res.status(400).json({ error: "Params required" });
+  }
+};
+
+exports.enableProductById = (req, res) => {
+  const { productId } = req.body;
+  if (productId) {
+    Product.updateOne({ _id: productId }, { isDisabled: false }).exec(
       (error, result) => {
         if (error) return res.status(400).json({ error });
         if (result) {
@@ -138,6 +212,23 @@ exports.enableProductByCateId = (req, res) => {
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find({ isDisabled: { $ne: true } })
+      .populate({ path: "category", select: "_id name categoryImage" })
+      .limit(100)
+      .exec();
+
+    if (products) {
+      res.status(200).json({ products });
+    } else {
+      res.status(400).json({ error: "something went wrong" });
+    }
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+};
+
+exports.getProductsDisable = async (req, res) => {
+  try {
+    const products = await Product.find({ isDisabled: { $eq: true } })
       .populate({ path: "category", select: "_id name categoryImage" })
       .limit(100)
       .exec();

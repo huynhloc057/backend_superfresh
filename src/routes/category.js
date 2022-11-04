@@ -20,7 +20,7 @@ router.post(
   "/add",
   requireSignin,
   adminMiddleware,
-  uploadCloud.single("categoryImage"),
+  uploadCloud.array("categoryImage"),
   addCategory
 );
 router.get("/getCategories", getCategories);

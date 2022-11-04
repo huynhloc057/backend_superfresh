@@ -13,8 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmO
 ###################################################
 GET  http://localhost:5000/api/deliveryInfo/get
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYzNDAwMTIyLCJleHAiOjE2NjU5OTIxMjJ9.XmwLOSOwGsNwmw1FFA4KL9QrlAbOXWh7mt0sJGsekwU
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxMzhmODY0NTU3ZmI1ZTIzNWMyMWIiLCJlbWFpbCI6ImxvY2h1eW5oQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY2OTM3Mzk2LCJleHAiOjE2Njk1MjkzOTZ9.XSLIPJRA0JxHZntzqqhwNjDo_FM6YEs5lr4QxD4VURc
 
 {
     

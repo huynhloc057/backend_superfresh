@@ -11,9 +11,7 @@ const categorySchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    categoryImage: {
-      type: String,
-    },
+    categoryImage: [{ img: { type: String } }],
     isDisabled: false,
   },
   { timestamps: true }

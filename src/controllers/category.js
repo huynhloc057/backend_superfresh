@@ -24,8 +24,13 @@ exports.addCategory = (req, res) => {
     slug: `${slugify(name)}-${shortid.generate()}`,
   };
 
-  if (req.file) {
-    categoryObj.categoryImage = req.file.path;
+  let categoryPictures = [];
+
+  if (req.files.length > 0) {
+    categoryPictures = req.files.map((file) => {
+      return { img: file.path };
+    });
+    categoryObj.categoryImage = [...categoryPictures];
   }
 
   const cate = new Category(categoryObj);
@@ -44,7 +49,6 @@ exports.getCategories = (req, res) => {
     if (error) {
       return res.status(400).json({ error });
     } else {
-      // const categoriesList = createCategories(categories);
       return res.status(200).json({ categories });
     }
   });
@@ -80,18 +84,16 @@ exports.getDisabledCategories = (req, res) => {
 };
 
 exports.deleteCategoryById = (req, res) => {
-  const { categoryId } = req.body;
-  if (categoryId) {
-    Category.updateOne({ _id: categoryId }, { isDisabled: true }).exec(
-      (error, result) => {
-        if (error) return res.status(400).json({ error });
-        if (result) {
-          res.status(202).json({ result });
-        } else {
-          res.status(400).json({ error: "something went wrong" });
-        }
+  const { _id } = req.body;
+  if (_id) {
+    Category.updateOne({ _id }, { isDisabled: true }).exec((error, result) => {
+      if (error) return res.status(400).json({ error });
+      if (result) {
+        res.status(202).json({ result });
+      } else {
+        res.status(400).json({ error: "something went wrong" });
       }
-    );
+    });
   } else {
     return res.status(400).json({ error: "Params required" });
   }
@@ -100,16 +102,14 @@ exports.deleteCategoryById = (req, res) => {
 exports.enableCategoryById = (req, res) => {
   const { _id } = req.body;
   if (_id) {
-    Category.updateOne({ _id: _id }, { isDisabled: false }).exec(
-      (error, result) => {
-        if (error) return res.status(400).json({ error });
-        if (result) {
-          res.status(202).json({ result });
-        } else {
-          res.status(400).json({ error: "something went wrong" });
-        }
+    Category.updateOne({ _id }, { isDisabled: false }).exec((error, result) => {
+      if (error) return res.status(400).json({ error });
+      if (result) {
+        res.status(202).json({ result });
+      } else {
+        res.status(400).json({ error: "something went wrong" });
       }
-    );
+    });
   } else {
     return res.status(400).json({ error: "Params required" });
   }

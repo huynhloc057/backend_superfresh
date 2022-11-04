@@ -49,7 +49,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzIxM2ViNDA3ZjFhODdiY2Y5NmQxYWMiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY2NjE4ODc5MSwiZXhwIjoxNjY4NzgwNzkxfQ.Fjy2JO-HFSnvC_2NLhSRh1966yBd1tYOOH9wgiCPGoY
 
 {
-    "_id":"633adda2598788c5610304e8"
+    "_id":"633adbcc598788c5610304c8"
 }
 
 # Update A category

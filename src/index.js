@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const cors = require("cors");
-const paypal = require("./config/paypal");
 
 env.config();
 mongoose
@@ -18,8 +17,6 @@ mongoose
   .then(() => {
     console.log("Database connected");
   });
-
-paypal.connect(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 
 app.use(cors());
 app.use(express.json());

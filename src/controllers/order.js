@@ -1,10 +1,10 @@
 const { Order, DeliveryInfo } = require("../models");
-const paypal = require("paypal-rest-sdk");
+const crypto = require("crypto");
+const https = require("https");
 
 exports.addOrder = (req, res) => {
   const { items, addressId, totalAmount, paymentStatus, paymentType } =
     req.body;
-  console.log(items);
   const orderStatus = [
     {
       type: "ordered",
@@ -166,13 +166,13 @@ exports.addOrderByPaymentMomo = (req, res) => {
 //Bước 1 của thanh toán momo
 exports.paymentWithMomo = async (req, res) => {
   const { order } = req.body;
-  const partnerCode = "MOMO6K0Y20210317"; //Đợi đăng ký business
+  const partnerCode = "MOMO6K0Y20210317";
   const accessKey = "8oZLaYOOTAswDt0O";
   const secretkey = "MHxk2u6eOXitCarGbCsGXmpydjn0wCAk";
   const requestId = partnerCode + new Date().getTime();
   const orderId = requestId;
   const orderInfo = "Thanh toán rau củ tại Super Fresh";
-  const redirectUrl = "";
+  const redirectUrl = "https://client-superfresh.vercel.app/cart";
   const ipnUrl = "http://localhost:5000/api/order/addOrderByPaymentMomo";
   const amount = order.totalAmount;
   const requestType = "captureWallet";
@@ -228,7 +228,7 @@ exports.paymentWithMomo = async (req, res) => {
       "Content-Length": Buffer.byteLength(body),
     },
   };
-  var request = await https.request(options, (resp) => {
+  const request = await https.request(options, (resp) => {
     resp.setEncoding("utf8");
     resp.on("data", (body) => {
       res.status(200).json({ url: JSON.parse(body).payUrl });
@@ -237,61 +237,7 @@ exports.paymentWithMomo = async (req, res) => {
       console.log("No more data in response.");
     });
   });
+
   request.write(body);
   request.end();
-};
-
-exports.paymentWithPaypal = async (req, res, next) => {
-  const { price, name } = req.body;
-  console.log(req.body);
-  const create_payment_json = {
-    intent: "sale",
-    payer: {
-      payment_method: "paypal",
-    },
-    redirect_urls: {
-      return_url: `https://app-travelbe.herokuapp.com/payment/success?price=${price}`,
-      cancel_url: "https://app-travelbe.herokuapp.com/payment/cancel",
-    },
-    transactions: [
-      {
-        item_list: {
-          items: [
-            {
-              name: `${name}`,
-              sku: "001",
-              price: `${price}`,
-              currency: "USD",
-              quantity: 1,
-            },
-          ],
-        },
-        amount: {
-          currency: "USD",
-          total: `${price}`,
-        },
-        description: `${name}`,
-      },
-    ],
-  };
-  console.log(create_payment_json);
-  paypal.payment.create(create_payment_json, (error, payment) => {
-    if (error) {
-      console.log(payment);
-      console.log(error);
-      res.status(400).send({
-        data: "",
-        error: "Cannot create order!",
-      });
-    } else {
-      for (let i = 0; i < payment.links.length; i++) {
-        if (payment.links[i].rel === "approval_url") {
-          res.status(200).send({
-            data: payment.links[i].href,
-            message: "Successfully create order!",
-          });
-        }
-      }
-    }
-  });
 };

@@ -29,7 +29,7 @@ router.post(
   uploadCloud.array("productPictures"),
   addProduct
 );
-router.post("/getProducts", getProducts);
+router.get("/getProducts", getProducts);
 router.post("/getProductDisable", getProductsDisable);
 router.post(
   "/addProductReview",
@@ -37,7 +37,7 @@ router.post(
   userMiddleware,
   addProductReview
 );
-router.post("/getById", getProductById);
+router.get("/getById", getProductById);
 router.post(
   "/update/:slug",
   requireSignin,
@@ -46,7 +46,7 @@ router.post(
   updateProduct
 );
 router.post("/searchByProductName", searchByProductName);
-router.post("/getProductsByCategory/:categoryId", getProductByCategory);
+router.get("/getProductsByCategory/:categoryId", getProductByCategory);
 router.post(
   "/deleteByCategory",
   requireSignin,
@@ -73,6 +73,6 @@ router.post(
   adminMiddleware,
   enableProductById
 );
-router.post("/:slug", getProductDetailsBySlug);
+router.get("/:slug", getProductDetailsBySlug);
 
 module.exports = router;

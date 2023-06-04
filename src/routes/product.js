@@ -13,6 +13,7 @@ const {
   deleteProductByCateId,
   enableProductByCateId,
   getProductsDisable,
+  updateQty,
 } = require("../controllers/product");
 const {
   requireSignin,
@@ -73,6 +74,7 @@ router.post(
   adminMiddleware,
   enableProductById
 );
+router.post("/updateQuantity", updateQty);
 router.get("/:slug", getProductDetailsBySlug);
 
 module.exports = router;

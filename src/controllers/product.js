@@ -89,25 +89,20 @@ exports.updateProduct = async (req, res, next) => {
     res.status(400).json({ error: "update failt" });
   }
 };
-
 exports.updateQty = (req, res) => {
-  const { productId, sizeProductId, quantity } = req.body;
+  const { productId, purchaseQty } = req.body;
+  console.log(productId);
   Product.findOne({ _id: productId }).exec((error, product) => {
     if (error) return res.status(400).json({ error });
-    const sizeMatch = product.sizes.find(
-      (sizeProduct) => sizeProduct._id == sizeProductId
-    );
-    if (sizeMatch) {
-      sizeMatch.quantity = quantity;
-      product.save((error, product) => {
-        if (error) return res.status(400).json({ error });
-        if (product) {
-          res.status(202).json({ product });
-        } else {
-          res.status(400).json({ error: "something went wrong" });
-        }
-      });
-    }
+    product.quantity -= purchaseQty;
+    product.save((error, product) => {
+      if (error) return res.status(400).json({ error });
+      if (product) {
+        res.status(202).json({ product });
+      } else {
+        res.status(400).json({ error: "something went wrong" });
+      }
+    });
   });
 };
 
